@@ -37,7 +37,8 @@ def main():
         message_body = request.form['Body']
         receivedMessage = message_body
         if message_body.encode('utf8') == variableName.encode('utf8'):
-            textMe("Not Good")
+            textBody = google_drive.beautifulBudget()
+            textMe(textBody)
         elif message_body.encode('utf8') == variableName2.encode('utf8'):
             textBody = google_drive.getFullSum()
             textMe(textBody)
