@@ -4,6 +4,7 @@ from twilio.rest import Client
 from flask import Flask, request
 from twilio import twiml
 import config
+import google_drive
 
 def textMe(messageBody):
     # Your Account SID from twilio.com/console
@@ -38,7 +39,8 @@ def main():
         if message_body.encode('utf8') == variableName.encode('utf8'):
             textMe("Not Good")
         elif message_body.encode('utf8') == variableName2.encode('utf8'):
-            textMe("You're broke")
+            textBody = google_drive.getFullSum()
+            textMe(textBody)
         else:
             textMe("I'm too stupid to understand that")
         return message_body
@@ -46,7 +48,7 @@ def main():
     app.run()
 
     print(receivedMessage)
-    print("something")
+
 
 if __name__ == "__main__":
 	main()
